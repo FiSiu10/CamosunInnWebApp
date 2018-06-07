@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  //h1= title
+
+  .container
+    .row.py-3.justify-content-md-center
+       h1.pl-3.ca-header-font.cover-heading Welcome to #{title}
+    .row.justify-content-md-center
+      .col-12.col-lg-2
+      .col-12.col-lg-6
+        image(src= pageInfo.image) 
+      .col-12.col-lg-4
+    br
+    .row
+      .col
+        pl-3= pageInfo.info
+  br
+  br 
+
+  .container-fluid.bg-grey
+    .row.justify-content-md-center
+      .card
+        .card-body
+          h3.card-title.pb-3 Contact Us
+          form(name='contact', action='/thanks', method='post')
+            .form-group.row 
+              label.col-form-label.col-12(for='name') Name: 
+              .col-12
+                input#name.form-control(type='text', name='name', required, placeholder='Full Name')
+            .form-group.row
+              label.col-form-label.col-12(for='email') Email: 
+              .col-12
+                input#email.form-control(type='email', name='email', required, placeholder='someone@email.com')
+            .form-group.row 
+              label.col-form-label.col-12(for='msg') Message: 
+              .col-12
+                textarea#msg.form-control(rows='5', name='msg', required, placeholder='Type your message')
+            .form-group.row
+              label.col-form-label.col-12
+              .col-12
+                button(type='submit') Send Message
+    .row
+      br
+    

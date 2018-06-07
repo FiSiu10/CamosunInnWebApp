@@ -1,0 +1,95 @@
+extends layout
+
+block content
+  .container
+    .row.py-3.justify-content-md-center
+      h1 Reservation Form
+    .row.py-3.justify-content-md-center
+      .col-12.col-md-8
+            .bootstrap-iso
+              .container-fluid
+                  .row
+                    .col-md-10.col-sm-10.col-xs-12
+                      form
+                        .form-group
+                          label(for='fname') Full Name:
+                            span.asteriskField *
+                          input#fname.form-control(type='text', name='fname', required, placeholder='Enter your first name')
+                        .form-group
+                          label(for='email') Email:
+                            span.asteriskField *
+                          input#email.form-control(type='email', name='email', required, placeholder='someone@email.com')
+                        .form-group
+                          // Street 1
+                          label.control-label(for='street1_id') Street Address 1:
+                          input#street1_id.form-control(type='text', name='street1', placeholder='Street address, P.O. box, company name, c/o')
+                        .form-group
+                          // Street 2
+                          label.control-label(for='street2_id') Street Address 2:
+                          input#street2_id.form-control(type='text', name='street2', placeholder='Apartment, suite, unit, building, floor, etc.')
+                        .form-group
+                          // City
+                          label.control-label(for='city_id') City:
+                          input#city_id.form-control(type='text', name='city', placeholder='Smallville')
+                        .form-group
+                          label.control-label(for='province_id') Province:
+                          select#province_id.form-control
+                            option(value='AB') Alberta
+                            option(value='BC') British Columbia
+                            option(value='MB') Manitoba
+                            option(value='NB') New Brunswick
+                            option(value='NL') Newfoundland and Labrador
+                            option(value='NS') Nova Scotia
+                            option(value='ON') Ontario
+                            option(value='PE') Prince Edward Island
+                            option(value='QC') Quebec
+                            option(value='SK') Saskatchewan
+                            option(value='NT') Northwest Territories
+                            option(value='NU') Nunavut
+                            option(value='YT') Yukon
+                        .form-group
+                          label.control-label(for='zip_id') Postal Code:
+                          input#postal_id.form-control(type='text', name='postal', placeholder='A1A 2B2')
+                        .form-group
+                          label.control-label.requiredField(for='date') Check In Date: 
+                            span.asteriskField *
+                          input#date.form-control(name='date', placeholder='MM/DD/YYYY', type='text')
+                        .form-group
+                          label.control-label.requiredField(for='date1') Check Out Date: 
+                            span.asteriskField *
+                          input#date1.form-control(name='date1', placeholder='MM/DD/YYYY', type='text')
+                        .form-group
+                          div
+                            button.btn.btn-primary(name='submit', type='submit', href='../rooms/confirmation') Submit
+            script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.3.min.js')
+            script.
+              $(document).ready(function(){
+              var date_input=$('input[name="date"]'); //our date input has the name "date"
+              var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+              date_input.datepicker({
+              format: 'mm/dd/yyyy',
+              container: container,
+              todayHighlight: true,
+              autoclose: true,
+              })
+              })
+              $(document).ready(function(){
+              var date_input1=$('input[name="date1"]'); //our date input has the name "date"
+              var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+              date_input1.datepicker({
+              format: 'mm/dd/yyyy',
+              container: container,
+              todayHighlight: true,
+              autoclose: true,
+              })
+              })
+              console.log("hello")
+      .col-12.col-md-4
+        image(src= rooms.image,  width='100%')
+        p.lead.pl-4.pt-5.ca-header-font.ca-sb-color You are reserving the #{rooms.title}
+          
+
+  
+
+
+

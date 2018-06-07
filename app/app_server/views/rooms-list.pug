@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .container
+    .row
+      br
+
+    .row.justify-content-md-center
+      each room in rooms
+        .col-lg-4
+          .card(style='width: 20rem;')
+            img.card-img-top(src= room.image, alt='Card image cap')
+            .card-body
+              h4.card-title #{room.title}
+              p.card-text #{room.details}
+              a.btn.btn-primary(href='/rooms/details')= detail
+
+    .row
+      br
+      br
+
+    .row.justify-content-md-center
+      each room in rooms2
+        .col-lg-4
+          .card(style='width: 20rem;')
+            img.card-img-top(src= room.image, alt='Card image cap')
+            .card-body
+              h4.card-title #{room.title}
+              p.card-text #{room.details}
+              a.btn.btn-primary(href='/rooms/details')= detail
+   
+  
+    
+
+

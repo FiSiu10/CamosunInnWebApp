@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .container
+    .row.py-3.justify-content-md-center
+      h1.pl-3.ca-header-font.cover-heading= rooms.title
+    .row.justify-content-md-center
+      image.img-responsive(src= rooms.image, height='100%')
+    .row
+      br
+    .row
+      .col-md-6
+        h3= amenities
+        .row
+          ul
+            each item in rooms.amenities
+              li #{item}
+
+      .col-md-6
+        h3= details
+        .row
+          ul
+            each feature in rooms.features
+              li #{feature}
+    .row.justify-content-md-center
+      a.btn.btn-primary(href='/rooms/reservation')= rooms.button

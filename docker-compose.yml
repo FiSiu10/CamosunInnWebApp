@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  node:
+    container_name: node
+
+    build: ./node
+    image: gitlab-fiona/node
+
+    user: "node"
+    working_dir: /home/node/app
+
+    environment:
+      - NODE_ENV=development
+      - DEBUG=camosun-inn,express:*
+
+    ports:
+      - "3000:3000"
+
+    links:
+      - db
+
+    volumes:
+      - ./app:/home/node/app
+
+    command: "nodemon -L"
+  
+  db:
+    image: mongo:3.4.10
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=camosun-inn
+    volumes:
+      - ./mongo-seed:/docker-entrypoint-initdb.d   
